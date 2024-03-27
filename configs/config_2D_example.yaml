@@ -1,0 +1,41 @@
+# params are all lists, so we can use the product function from itertools to generate the grid
+param_grid:
+  # norm of theta for generating synthetic data
+  data_theta_norm: [5]
+  # whether to use misspecified label method or not. see utils/data_gen_utils.py for details
+  label_method: ['misspec','misspec2']
+  label_method_a: [0.95]
+  label_method_b: [0.05]
+  # lambda for ridge regression
+  lambd: [0.1, 0.01, 0.001]
+  # number of features
+  data_p: [3000]
+  # number of training samples
+  N_train: [6870]
+  # alpha for subselector (see Eq. 6.1 in the paper)
+  alpha_exp: [-1, -0.5, 0, 0.5, 1]
+  # percentage of training samples to use for pursuing subselection based training
+  split_pct: [5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 95]
+
+# sets up optimization parameters for numerically optimizing the lagrangian
+opt_params:
+  # initial value of opt params
+  alpha_perp_init: 1 # initial value for alpha_perpendicular
+  alpha_0_init: 1 # initial value for alpha_0
+  mu_init: 1 # initial value for mu
+  # optimization method
+  int_method: 'Trapez' # integration method for numerical integration
+  n_quad: 50 # number of quadrature points for numerical integration
+  trapz_limit: 5 # limits for trapezoidal integration
+
+# number of parallel jobs to run, adjust based on your system's capability and the nature of the main function
+n_jobs: 110
+
+# log file
+logs:
+  path: './logs'
+  name: 'theory2D.log'
+
+# save path for the results
+save_path: './results/theoryResults2d'
+

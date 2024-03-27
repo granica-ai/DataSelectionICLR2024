@@ -1,0 +1,2 @@
+alpha_perp,alpha_0,alpha_s,mu,misc_error,dataThetaNorm,lambd,split_pct,alphaExp,dataN,dataP,n_quadrature,method,trapzLimit,label_method,label_method_a,label_method_b,method_solve,lr,tol_mu,tol_alpha,beta_perp,beta_0,iter,decay,max_iter
+0.22762294274581402,0.6476389197356709,-0.14379429872279437,6.9839899591012236,0.16196917100200015,5,0.1,40,0.5,34345,932,40,Trapez,5,misspec,0.95,0.05,solve_gd_alpha,5,1e-10,0.0005,0.95,2.75,5,False,120

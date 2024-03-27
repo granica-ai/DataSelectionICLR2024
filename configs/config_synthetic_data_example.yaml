@@ -1,0 +1,42 @@
+# params are all lists, so we can use the product function from itertools to generate the grid
+param_grid:
+  # norm of theta for generating synthetic data
+  data_theta_norm: 5
+  # whether to use misspecified label method or not. see utils/data_gen_utils.py for details
+  label_method: 'misspec'
+  label_method_a: 0.95
+  label_method_b: 0.05
+  # Unbiased or non-reweighted sampling
+  reweight: False
+  # list of lambda for ridge regression
+  lambd: [0.001, 0.01, 0.1]
+  # number of features
+  data_p: 932
+  # number of training samples
+  N_train: 34345
+  # number of validation samples
+  N_val: 30000
+  # number of test samples
+  N_test: 30000
+  # number of samples to train the surrogate model (8*P) , 0 if perfect surrogate
+  N_surr: 7456
+  # L2 regularization parameter for surrogate model (8*P), None if perfect surrogate
+  lambd_surr: 0.01
+  # list of alphas for subselector (see Eq. 6.1 in the paper)
+  # alpha can be 'Easy', 'Hard' for topK subselection
+  alpha_exp: [-1, -0.5, 0, 0.5, 1]
+  # percentage of training samples to use for pursuing subselection based training
+  split_pct: [5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+  # number of random data generation
+  N_gen: 10
+  # number of random samplings
+  N_samplings: 10
+
+# log file
+logs:
+  path: './logs'
+  name: 'synthetic.log'
+
+# save path for the results
+save_path: './results/syntheticResults'
+

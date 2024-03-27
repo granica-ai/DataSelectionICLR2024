@@ -1,0 +1,2 @@
+alpha_perp,alpha_0,mu,MiscError,dataThetaNorm,lambd,split_pct,alpha_exp,dataN,dataP,n_quadrature,method,trapzLimit,label_method,label_method_a,label_method_b
+0.9221203346266944,0.10882814830561406,0.02490518339855688,0.46594533380930125,5,0.01,5,0.5,6870,3000,50,Trapez,5,misspec,0.95,0.05

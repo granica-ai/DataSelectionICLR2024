@@ -1,0 +1,64 @@
+# params are all lists, so we can use the product function from itertools to generate the grid
+param_grid:
+  # norm of theta for generating synthetic data
+  data_theta_norm: [5]
+
+  # beta_0 and beta_perp correspond to the projection of theta surrogate (theta_surr) on theta_0 (true data theta) and
+  # its orthogonal component. They determine the effect of surrogate model on ERM.
+  # See Eq 5.2 in the paper for more details.
+
+  # Below we provide parameters to reproduce the results in Figure 7 of the paper, Appendix N.
+  # E.g. 1
+  # N_su = 4 * P (=3728), \lambda_surr = 0.037, label_method = misspec1 [f_1(z)] leads to
+  # (beta_0, beta_perp): (1.82, 0.95)
+  # E.g. 2
+  # N_su = 8 * P (=7456), \lambda_surr = 0.01, label_method = misspec2 [f_2(z)] leads to
+  # (beta_0, beta_perp): (2.75, 0.95)
+  beta_0: [2.75]
+  beta_perp: [0.95]
+
+  # E.g. 2: the below values correspond to the case of N_su = 8*P (= 7456) and \lambda_surr = 0.01 in Figure 2 of the
+  # (beta_0, beta_perp): (2.75, 0.95)
+
+  # whether to use misspecified label method or not. see utils/data_gen_utils.py for details
+  label_method: ['misspec']
+  label_method_a: [0.95]
+  label_method_b: [0.05]
+  # lambda for ridge regression
+  lambd: [0.001, 0.01, 0.1]
+  # number of features
+  data_p: [932]
+  # number of training samples
+  N_train: [34345]
+  # alpha for subselector (see Eq. 6.1 in the paper)
+  alpha_exp: [-1, -0.5, 0, 0.5,1]
+  # percentage of training samples to use for pursuing subselection based training
+  split_pct: [5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 95]
+
+# sets up optimization parameters for numerically optimizing the lagrangian
+opt_params:
+  # initial value of opt params
+  alpha_perp_init: 1 # initial value for alpha_perpendicular
+  alpha_0_init: 1 # initial value for alpha_0
+  alpha_s_init: 1 # initial value for alpha_s
+  mu_init: 1 # initial value for mu
+  # optimization method
+  int_method: 'Trapez' # integration method for numerical integration
+  n_quad: 40 #50 # number of quadrature points for numerical integration
+  trapz_limit: 5 # limits for trapezoidal integration
+  use_grad_mu: True # whether to use explicit gradient of mu in optimization
+  tol_alpha: 5e-4 # tolerance for alpha optimization
+  tol_mu: 1e-10 # tolerance for mu optimization
+  max_iter: 120 # maximum number of iterations for optimization
+
+# number of parallel jobs to run, adjust based on your system's capability and the nature of the main function
+n_jobs: 40
+
+# log file
+logs:
+  path: './logs'
+  name: 'theory3D.log'
+
+# save path for the results
+save_path: './results/theoryResults3d'
+
